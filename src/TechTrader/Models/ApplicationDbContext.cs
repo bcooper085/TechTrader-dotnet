@@ -9,9 +9,8 @@ namespace TechTrader.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext()
         {
-
         }
 
         public DbSet<Post> Posts { get; set; }
@@ -21,6 +20,16 @@ namespace TechTrader.Models
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TechTrader;integrated security=True");
+        }
+
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
         }
     }
 }

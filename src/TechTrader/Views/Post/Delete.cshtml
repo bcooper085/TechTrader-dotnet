@@ -1,0 +1,16 @@
+﻿@model TechTrader.Models.Post
+@{
+    ViewData["Title"] = "Tech Trader";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <div class="post-list">
+    <h2>Are you sure you want to delete: @Html.DisplayFor(model => model.Title) | @Html.DisplayFor(model => model.PostId)?</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    }   
+</div>
+
+<p class="btn btn-primary" id="return">@Html.ActionLink("Back to list", "Index")</p>

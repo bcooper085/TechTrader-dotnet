@@ -1,0 +1,52 @@
+﻿@model TechTrader.Models.Post
+@{
+    ViewData["Title"] = "Tech Trader";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="post-list">
+    <h2>Post new Tech</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        
+        @Html.LabelFor(model => model.Category)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Category)
+        </div>
+        
+        @Html.LabelFor(model => model.Location)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Location)
+        </div>
+       
+         @Html.LabelFor(model => model.Title)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Title)
+        </div>
+
+        @Html.LabelFor(model => model.Price)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Price)
+        </div>
+
+        @Html.LabelFor(model => model.Description)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Description)
+        </div>
+
+        @Html.LabelFor(model => model.Brand)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Brand)
+        </div>
+
+        @Html.LabelFor(model => model.Model)
+        <div class="form-info">
+            @Html.TextBoxFor(model => model.Model)
+        </div>
+
+        <br />
+        <input type="submit" value="Post" class="btn btn-success" />
+    }
+    <p class="btn btn-primary" id="return">@Html.ActionLink("Back to list", "Index")</p>
+</div>
