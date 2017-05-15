@@ -1,0 +1,15 @@
+﻿@model IEnumerable<TechTrader.Models.Post>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="post-list">
+    <h2>Available Tech</h2>
+    <ul>
+        @foreach (var techList in Model)
+        {
+            <li>@Html.DisplayFor(modelItem => techList.Title) | @Html.ActionLink("Details", "Details", new { id = techList.PostId }) | @Html.ActionLink("Edit", "Edit", new { id = techList.PostId }) | @Html.ActionLink("Delete", "Delete", new { id = techList.PostId })</li>
+        }
+        <p>@Html.ActionLink("Add new Post", "Create")</p>
+    </ul>
+</div>
