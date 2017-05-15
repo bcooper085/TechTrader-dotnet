@@ -41,6 +41,7 @@ namespace TechTrader.Controllers
             return View(thisPost);
         }
 
+        [HttpPost]
         public IActionResult Edit(Post post)
         {
             db.Entry(post).State = EntityState.Modified;

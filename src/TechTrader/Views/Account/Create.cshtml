@@ -9,18 +9,18 @@
     <hr />
     @using (Html.BeginForm())
     {
-        
+
         @Html.LabelFor(model => model.Category)
         <div class="form-info">
             @Html.TextBoxFor(model => model.Category)
         </div>
-        
+
         @Html.LabelFor(model => model.Location)
         <div class="form-info">
             @Html.TextBoxFor(model => model.Location)
         </div>
-       
-         @Html.LabelFor(model => model.Title)
+
+        @Html.LabelFor(model => model.Title)
         <div class="form-info">
             @Html.TextBoxFor(model => model.Title)
         </div>

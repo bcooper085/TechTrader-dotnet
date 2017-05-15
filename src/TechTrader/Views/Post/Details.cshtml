@@ -21,5 +21,7 @@
     <br />
     @Html.DisplayNameFor(model => model.Model): @Html.DisplayFor(model => model.Model)
     <br />
-    <p class="btn btn-primary" id="return">@Html.ActionLink("Back to list", "Index")</p>
+    <p class="btn btn-warning button">@Html.ActionLink("Edit", "Edit", new { id = Model.PostId }, null)</p>
+    <p class="btn btn-danger button">@Html.ActionLink("Delete", "Delete", new { id = Model.PostId }, null)</p>
+    <p class="btn btn-primary button" id="return">@Html.ActionLink("Back to list", "Index")</p>
 </div>

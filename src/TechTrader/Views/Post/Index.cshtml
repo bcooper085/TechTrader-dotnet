@@ -9,8 +9,8 @@
     <ul>
         @foreach (var techList in Model)
         {
-            <li>@Html.DisplayFor(modelItem => techList.Title) | @Html.ActionLink("Details", "Details", new { id = techList.PostId }) | @Html.ActionLink("Edit", "Edit", new { id = techList.PostId }) | @Html.ActionLink("Delete", "Delete", new { id = techList.PostId })</li>
+            <li>@Html.DisplayFor(modelItem => techList.Title) | @Html.ActionLink("Details", "Details", new { id = techList.PostId })</li>
         }       
     </ul>
-    <div class="btn btn-success button"><p>@Html.ActionLink("Add new Post", "Create")</p></div>
+    <p class="btn btn-warning button">@Html.ActionLink("Add new Post", "Create")</p>
 </div>
