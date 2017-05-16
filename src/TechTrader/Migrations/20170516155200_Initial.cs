@@ -71,6 +71,7 @@ namespace TechTrader.Migrations
                     Brand = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     Model = table.Column<string>(nullable: true),
                     Price = table.Column<string>(nullable: true),

@@ -10,6 +10,12 @@
 </head>
 <body>
     <div class="container">
+        @Html.ActionLink("Register", "Register", "Account")
+        @Html.ActionLink("Login", "Login", "Account")
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <input type="submit" id="logout" value="Logout" class="btn" />
+        }
         @RenderBody()
     </div>
 </body>

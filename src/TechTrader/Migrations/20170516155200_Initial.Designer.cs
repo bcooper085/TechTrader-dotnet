@@ -8,7 +8,7 @@ using TechTrader.Models;
 namespace TechTrader.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170515201036_Initial")]
+    [Migration("20170516155200_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -221,6 +221,8 @@ namespace TechTrader.Migrations
                     b.Property<string>("Category");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("Image");
 
                     b.Property<string>("Location");
 

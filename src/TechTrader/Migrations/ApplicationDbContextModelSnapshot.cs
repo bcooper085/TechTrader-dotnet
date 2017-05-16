@@ -221,6 +221,8 @@ namespace TechTrader.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("Image");
+
                     b.Property<string>("Location");
 
                     b.Property<string>("Model");
