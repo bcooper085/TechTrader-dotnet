@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{ 
+    ViewData["Title"] = "Tech Trader";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using System.Security.Claims
+@model TechTrader.Models.Seller
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h4>You do not have a Seller profile. Please create your Seller profile</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(model => model.FirstName)
+            @Html.TextBoxFor(model => model.FirstName)
+            @Html.LabelFor(model => model.LastName)
+            @Html.TextBoxFor(model => model.LastName)
+
+
+            <input type="submit" value="Register" />
+        }
 }

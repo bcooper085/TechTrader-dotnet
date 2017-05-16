@@ -13,7 +13,7 @@ namespace TechTrader.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public IActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(db.Posts.Include(i => i.).ToList());
         }
 
         public IActionResult Create()
