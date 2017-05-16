@@ -9,13 +9,24 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="container">
-        @Html.ActionLink("Register", "Register", "Account")
-        @Html.ActionLink("Login", "Login", "Account")
-        @using (Html.BeginForm("LogOff", "Account"))
+    <ul>
+        @if (User.Identity.IsAuthenticated)
         {
-            <input type="submit" id="logout" value="Logout" class="btn" />
+            <li>@Html.ActionLink(User.Identity.Name, "Index", "Account")</li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account"))
+                {
+                    <input type="submit" id="logout" value="Logout" class="btn" />
+                }
+            </li>
         }
+        else
+        {
+            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+        }
+    </ul>
+    <div class="container">
         @RenderBody()
     </div>
 </body>

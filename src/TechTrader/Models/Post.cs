@@ -20,7 +20,12 @@ namespace TechTrader.Models
         public string Brand { get; set; }
         public string Model { get; set; }
         public string Image { get; set; }
+        public virtual Seller Seller { get; set; }
 
-        public Post() { }
+        public Seller FindSeller(string UserName)
+        {
+            Seller thisSeller = new ApplicationDbContext().Sellers.FirstOrDefault(i => i.UserName == UserName);
+            return thisSeller;
+        }
     }
 }

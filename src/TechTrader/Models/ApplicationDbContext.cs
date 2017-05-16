@@ -13,7 +13,8 @@ namespace TechTrader.Models
         {
         }
 
-        public DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Seller> Sellers { get; set; }
         public virtual DbSet<MailingList> MailingLists { get; set; }
         public virtual DbSet<Newsletter> Newsletters { get; set; }
 

@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Tech Trader ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+
+    <div class="text-center">
+        <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
+        <h3>Your Current Jobs:</h3>
+        @foreach (var Job in Model.Jobs)
+        {
+            @if (Job.Pending == false && Job.Completed == false)
+            {
+                <div class="jobs">
+                    <h4>@Job.Title</h4>
+                    <form action="Start" id="pending-jobs">
+                        <input type="hidden" name="pending-jobs" value="@Job.JobId" id="JobId" />
+                        <button type="submit">Start Job</button>
+                    </form>
+                </div>
+            }
+
+            if (Job.Pending == true)
+            {
+                <div class="pending">
+                    <h4>@Job.Title</h4>
+                    <form action="Complete" id="completed-jobs">
+                        <input type="hidden" name="completed-jobs" value="@Job.JobId" id="JobId" />
+                        <button type="submit">Complete Job</button>
+                    </form>
+                </div>
+            }
+
+            if (Job.Completed == true)
+            {
+                <h4>@Job.Title</h4>
+            }
+
+        }
+        @if (Model.Available)
+        {
+            <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
+        }
+        else
+        {
+            <p>You are already assigned to a job.</p>
+        }
+    </div>
+}
