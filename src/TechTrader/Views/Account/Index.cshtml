@@ -1,18 +1,12 @@
 ﻿@using System.Security.Claims
-@model IEnumerable<TechTrader.Models.Post>
+
 @{
     ViewData["Title"] = "Tech Trader";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
-    @foreach (var post in Model)
-    {
-        <div class="col-md-4">
-            <div class="">
-                <h3>@Html.ActionLink(post.Title, "Details", "Post", new { id = post.PostId }, null)</h3>
-                <img src="@Url.Content(post.Image)" alt="Image" />
-            </div>
-        </div>
-    }
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Greetings @User.Identity.Name</h2>
+    <p>@Html.ActionLink("Register as a Seller", "Create", "Seller")</p>
+}

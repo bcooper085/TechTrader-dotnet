@@ -9,21 +9,21 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <ul>
+    <ul class="nav nav-tabs">
         @if (User.Identity.IsAuthenticated)
         {
-            <li>@Html.ActionLink(User.Identity.Name, "Index", "Account")</li>
+            <li role="presentation">@Html.ActionLink(User.Identity.Name, "Index", "Seller")</li>
             <li>
                 @using (Html.BeginForm("LogOff", "Account"))
                 {
-                    <input type="submit" id="logout" value="Logout" class="btn" />
+                    <input type="submit" id="logout" value="Logout" role="presentation" />
                 }
             </li>
         }
         else
         {
-            <li>@Html.ActionLink("Register", "Register", "Account")</li>
-            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+            <li role="presentation">@Html.ActionLink("Register", "Register", "Account")</li>
+            <li role="presentation">@Html.ActionLink("Login", "Login", "Account")</li>
         }
     </ul>
     <div class="container">

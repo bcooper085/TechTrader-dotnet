@@ -15,8 +15,6 @@ namespace TechTrader.Models
 
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Seller> Sellers { get; set; }
-        public virtual DbSet<MailingList> MailingLists { get; set; }
-        public virtual DbSet<Newsletter> Newsletters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

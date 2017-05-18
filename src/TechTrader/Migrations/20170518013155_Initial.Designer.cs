@@ -8,7 +8,7 @@ using TechTrader.Models;
 namespace TechTrader.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170516155200_Initial")]
+    [Migration("20170518013155_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,44 +173,6 @@ namespace TechTrader.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("TechTrader.Models.MailingList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("UserEmail");
-
-                    b.Property<string>("UserId");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("MailingLists");
-                });
-
-            modelBuilder.Entity("TechTrader.Models.Newsletter", b =>
-                {
-                    b.Property<int>("NewsletterId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Body");
-
-                    b.Property<string>("Image");
-
-                    b.Property<string>("Title");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("NewsletterId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Newsletters");
-                });
-
             modelBuilder.Entity("TechTrader.Models.Post", b =>
                 {
                     b.Property<int>("PostId")
@@ -230,11 +192,33 @@ namespace TechTrader.Migrations
 
                     b.Property<string>("Price");
 
+                    b.Property<int?>("SellerId");
+
                     b.Property<string>("Title");
 
                     b.HasKey("PostId");
 
+                    b.HasIndex("SellerId");
+
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("TechTrader.Models.Seller", b =>
+                {
+                    b.Property<int>("SellerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("SellerId");
+
+                    b.ToTable("Sellers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -274,18 +258,11 @@ namespace TechTrader.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TechTrader.Models.MailingList", b =>
+            modelBuilder.Entity("TechTrader.Models.Post", b =>
                 {
-                    b.HasOne("TechTrader.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("TechTrader.Models.Newsletter", b =>
-                {
-                    b.HasOne("TechTrader.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                    b.HasOne("TechTrader.Models.Seller", "Seller")
+                        .WithMany("Posts")
+                        .HasForeignKey("SellerId");
                 });
         }
     }

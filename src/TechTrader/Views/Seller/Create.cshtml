@@ -7,14 +7,15 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <h4>You do not have a Seller profile. Please create your Seller profile</h4>
+    <h4>Please create your Seller profile</h4>
         @using (Html.BeginForm())
         {
             @Html.LabelFor(model => model.FirstName)
             @Html.TextBoxFor(model => model.FirstName)
             @Html.LabelFor(model => model.LastName)
             @Html.TextBoxFor(model => model.LastName)
-
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email)
 
             <input type="submit" value="Register" />
         }

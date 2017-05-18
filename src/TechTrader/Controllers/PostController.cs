@@ -11,9 +11,10 @@ namespace TechTrader.Controllers
     public class PostController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
         public IActionResult Index()
         {
-            return View(db.Posts.Include(i => i.).ToList());
+            return View(db.Posts.Include(i => i.Seller).ToList());
         }
 
         public IActionResult Create()
@@ -24,6 +25,9 @@ namespace TechTrader.Controllers
         [HttpPost]
         public IActionResult Create(Post post)
         {
+            post.Seller = db.Sellers.FirstOrDefault(i => i.UserName == User.Identity.Name);
+            db.Entry(post).State = EntityState.Modified;
+
             db.Posts.Add(post);
             db.SaveChanges();
             return RedirectToAction("Index");

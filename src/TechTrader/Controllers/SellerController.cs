@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TechTrader.Controllers
 {
-    public class SellersController : Controller
+    public class SellerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -17,7 +17,7 @@ namespace TechTrader.Controllers
             var thisSeller = db.Sellers.Include(i => i.Posts).FirstOrDefault(i => i.UserName == User.Identity.Name);
             if (thisSeller != null)
             {
-                return View();
+                return View(thisSeller);
             }
             else
             {

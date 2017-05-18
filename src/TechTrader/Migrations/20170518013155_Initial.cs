@@ -63,23 +63,19 @@ namespace TechTrader.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Posts",
+                name: "Sellers",
                 columns: table => new
                 {
-                    PostId = table.Column<int>(nullable: false)
+                    SellerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Brand = table.Column<string>(nullable: true),
-                    Category = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
-                    Location = table.Column<string>(nullable: true),
-                    Model = table.Column<string>(nullable: true),
-                    Price = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    UserName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.PostId);
+                    table.PrimaryKey("PK_Sellers", x => x.SellerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -169,45 +165,29 @@ namespace TechTrader.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MailingLists",
+                name: "Posts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    PostId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserEmail = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MailingLists", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MailingLists_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Newsletters",
-                columns: table => new
-                {
-                    NewsletterId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Body = table.Column<string>(nullable: true),
+                    Brand = table.Column<string>(nullable: true),
+                    Category = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    Location = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    Price = table.Column<string>(nullable: true),
+                    SellerId = table.Column<int>(nullable: true),
+                    Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Newsletters", x => x.NewsletterId);
+                    table.PrimaryKey("PK_Posts", x => x.PostId);
                     table.ForeignKey(
-                        name: "FK_Newsletters_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        name: "FK_Posts_Sellers_SellerId",
+                        column: x => x.SellerId,
+                        principalTable: "Sellers",
+                        principalColumn: "SellerId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -253,14 +233,9 @@ namespace TechTrader.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MailingLists_UserId",
-                table: "MailingLists",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Newsletters_UserId",
-                table: "Newsletters",
-                column: "UserId");
+                name: "IX_Posts_SellerId",
+                table: "Posts",
+                column: "SellerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -281,12 +256,6 @@ namespace TechTrader.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MailingLists");
-
-            migrationBuilder.DropTable(
-                name: "Newsletters");
-
-            migrationBuilder.DropTable(
                 name: "Posts");
 
             migrationBuilder.DropTable(
@@ -294,6 +263,9 @@ namespace TechTrader.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Sellers");
         }
     }
 }
