@@ -13,10 +13,10 @@
         @if (User.Identity.IsAuthenticated)
         {
             <li role="presentation">@Html.ActionLink(User.Identity.Name, "Index", "Seller")</li>
-            <li>
+            <li class="nav pull-right">
                 @using (Html.BeginForm("LogOff", "Account"))
                 {
-                    <input type="submit" id="logout" value="Logout" role="presentation" />
+                    <input type="submit" id="logout" value="Logout" class="btn logout" />
                 }
             </li>
         }
