@@ -10,6 +10,7 @@
 </head>
 <body>
     <ul class="nav nav-tabs">
+        <li class="logo">@Html.ActionLink("Tech Trader", "Index", "Home")</li>
         @if (User.Identity.IsAuthenticated)
         {
             <li role="presentation">@Html.ActionLink(User.Identity.Name, "Index", "Seller")</li>
@@ -22,8 +23,8 @@
         }
         else
         {
-            <li role="presentation">@Html.ActionLink("Register", "Register", "Account")</li>
-            <li role="presentation">@Html.ActionLink("Login", "Login", "Account")</li>
+            <li class="nav pull-right">@Html.ActionLink("Register", "Register", "Account")</li>
+            <li class="nav pull-right">@Html.ActionLink("Login", "Login", "Account")</li>
         }
     </ul>
     <div class="container">

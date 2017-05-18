@@ -23,3 +23,12 @@
 li {
     list-style: none;
 }
+
+.logo {
+    font-size: 1.8em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.pull-right {
+    font-size: 1.5em;margin-top: .22%;
+}
